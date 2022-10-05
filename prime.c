@@ -1,31 +1,31 @@
-#include <stdio.h>
+#include <iostream>
+using namespace std;
 
 int main() {
 
-  int n, i, flag = 0;
-  printf("Enter a positive integer: ");
-  scanf("%d", &n);
+  int i, n;
+  bool is_prime = true;
+
+  cout << "Enter a positive integer: ";
+  cin >> n;
 
   // 0 and 1 are not prime numbers
-  // change flag to 1 for non-prime number
-  if (n == 0 || n == 1)
-    flag = 1;
+  if (n == 0 || n == 1) {
+    is_prime = false;
+  }
 
-  for (i = 2; i <= n / 2; ++i) {
-
-    // if n is divisible by i, then n is not prime
-    // change flag to 1 for non-prime number
+  // loop to check if n is prime
+  for (i = 2; i <= n/2; ++i) {
     if (n % i == 0) {
-      flag = 1;
+      is_prime = false;
       break;
     }
   }
 
-  // flag is 0 for prime numbers
-  if (flag == 0)
-    printf("%d is a prime number.", n);
+  if (is_prime)
+    cout << n << " is a prime number";
   else
-    printf("%d is not a prime number.", n);
+    cout << n << " is not a prime number";
 
   return 0;
 }
